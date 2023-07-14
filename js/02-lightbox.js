@@ -17,11 +17,4 @@ function renderImagesGallery(evn) {
     galleryEl.insertAdjacentHTML("afterbegin",imagesGalleryMarkup);
     const lightbox = new SimpleLightbox('.gallery a', {captionsData: `alt`, captionDelay: 250});
 };
-// galleryEl.addEventListener('click', onImageClickEnlargeImg)
-// function onImageClickEnlargeImg(evn) {
-//     evn.preventDefault()
-//     if (evn.target.nodeName != "IMG") {
-//         return
-//     }
-//     gallery.on('show.simplelightbox', function () {});
-//   }
+

@@ -1,18 +1,6 @@
 import { galleryItems } from './gallery-items.js';
-// import * as basicLightbox from 'basiclightbox';
-// Change code below this line
-
 console.log(galleryItems);
-// <li class="gallery__item">
-//   <a class="gallery__link" href="large-image.jpg">
-    // <img
-    //   class="gallery__image"
-    //   src="small-image.jpg"
-    //   data-source="large-image.jpg"
-    //   alt="Image description"
-    // />
-//   </a>
-// </li>
+
 const galleryEl = document.querySelector(".gallery")
 window.addEventListener('load', renderImagesGallery);
 
@@ -43,7 +31,7 @@ function onImageClickEnlargeImg(evn) {
     if (evn.target.nodeName != "IMG") {
         return
     }
-    
+
     const instance = basicLightbox.create(`<img width-"1400" height-"900" src="${evn.target.dataset.source}"> alt="${evn.target.alt}"`,
         {
             onShow: addEscapeCloseListener ,
@@ -67,20 +55,3 @@ function onImageClickEnlargeImg(evn) {
     window.removeEventListener("keydown",closeOnEscape)
     }
 }
-
-
-
-
-
-
-
-
-// const instance = basicLightbox.create();
-
-//      if (instance.visible()) {
-//         window.addEventListener('keydown', (event) => {
-//         if (event.key === "Escape") {
-//             instance.close();
-//         }
-//     })
-//   }
