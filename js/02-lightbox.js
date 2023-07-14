@@ -14,14 +14,14 @@ function createImagesGalleryMarkup(items) {
 }
 function renderImagesGallery(evn) {
     const imagesGalleryMarkup = createImagesGalleryMarkup(galleryItems)
-    galleryEl.innerHTML = imagesGalleryMarkup;
-    var lightbox = new SimpleLightbox('.gallery a', {captionsData: `alt`, captionDelay: 250});
+    galleryEl.insertAdjacentHTML("afterbegin",imagesGalleryMarkup);
+    const lightbox = new SimpleLightbox('.gallery a', {captionsData: `alt`, captionDelay: 250});
 };
-galleryEl.addEventListener('click', onImageClickEnlargeImg)
-function onImageClickEnlargeImg(evn) {
-    evn.preventDefault()
-    if (evn.target.nodeName != "IMG") {
-        return
-    }
-    gallery.on('show.simplelightbox', function () {});
-  }
+// galleryEl.addEventListener('click', onImageClickEnlargeImg)
+// function onImageClickEnlargeImg(evn) {
+//     evn.preventDefault()
+//     if (evn.target.nodeName != "IMG") {
+//         return
+//     }
+//     gallery.on('show.simplelightbox', function () {});
+//   }

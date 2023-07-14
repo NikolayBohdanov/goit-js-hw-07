@@ -32,28 +32,55 @@ function createImagesGalleryMarkup(items) {
 
 function renderImagesGallery(evn) {
     const imagesGalleryMarkup = createImagesGalleryMarkup(galleryItems)
-    galleryEl.innerHTML = imagesGalleryMarkup;
+    galleryEl.insertAdjacentHTML("afterbegin",imagesGalleryMarkup);
 };
 
 galleryEl.addEventListener('click', onImageClickEnlargeImg)
+
 
 function onImageClickEnlargeImg(evn) {
     evn.preventDefault()
     if (evn.target.nodeName != "IMG") {
         return
     }
-    let url = evn.target.getAttribute('data-source');
-    const instance = basicLightbox.create(`<img width-"1400" height-"900" src="${evn.target.dataset.source}"> alt="${evn.target.alt}"`, { closable: false });
+    
+    const instance = basicLightbox.create(`<img width-"1400" height-"900" src="${evn.target.dataset.source}"> alt="${evn.target.alt}"`,
+        {
+            onShow: addEscapeCloseListener ,
+            onClose: removeEventListenerOnClose 
+        })
+    
     instance.show()
-     if (instance.visible()) {
-        window.addEventListener('keydown', (event) => {
-        if (event.key === "Escape") {
-            instance.close();
-        }
-    })
-  }
+
+    function closeOnEscape(evnt) {
+        if (evnt.key === "Escape") {
+                console.log("Tu nazal esc")
+                instance.close();
+                
+            }
+
+    }
+    function addEscapeCloseListener() {
+    window.addEventListener('keydown', closeOnEscape)
+    }
+    function removeEventListenerOnClose() {
+    window.removeEventListener("keydown",closeOnEscape)
+    }
 }
 
 
 
 
+
+
+
+
+// const instance = basicLightbox.create();
+
+//      if (instance.visible()) {
+//         window.addEventListener('keydown', (event) => {
+//         if (event.key === "Escape") {
+//             instance.close();
+//         }
+//     })
+//   }
